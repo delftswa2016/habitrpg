@@ -106,7 +106,7 @@ if (cores!==0 && cluster.isMaster && (isDev || isProd)) {
 
   require('./middlewares/apiThrottle')(oldApp);
   oldApp.use(require('./middlewares/domain')(server,mongoose));
-  if (!isProd && !DISABLE_LOGGING) oldApp.use(express.logger("dev"));
+  //if (!isProd && !DISABLE_LOGGING) oldApp.use(express.logger("dev"));
   oldApp.use(express.compress());
   oldApp.set("views", __dirname + "/../views");
   oldApp.set("view engine", "jade");
@@ -114,8 +114,8 @@ if (cores!==0 && cluster.isMaster && (isDev || isProd)) {
   oldApp.use(require('./middlewares/cors'));
 
   var redirects = require('./middlewares/redirects');
-  oldApp.use(redirects.forceHabitica);
-  oldApp.use(redirects.forceSSL);
+  //oldApp.use(redirects.forceHabitica);
+  //oldApp.use(redirects.forceSSL);
   oldApp.use(express.urlencoded());
   oldApp.use(express.json());
   oldApp.use(require('method-override')());
